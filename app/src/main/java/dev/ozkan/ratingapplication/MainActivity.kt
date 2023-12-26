@@ -3,7 +3,9 @@ package dev.ozkan.ratingapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import dev.ozkan.ratingapplication.app.login.LoginActivity
+import android.os.Handler
+import android.os.Looper
+import dev.ozkan.ratingapplication.app.login.AuthenticationActivity
 import dev.ozkan.ratingapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +19,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.getStartedButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, AuthenticationActivity::class.java)
             startActivity(intent)
-        }
+            finish()
+        }, 3000)
     }
 }
