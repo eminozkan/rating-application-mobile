@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import dev.ozkan.ratingapplication.app.login.AuthenticationActivity
+import dev.ozkan.ratingapplication.app.auth.AuthenticationActivity
 import dev.ozkan.ratingapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

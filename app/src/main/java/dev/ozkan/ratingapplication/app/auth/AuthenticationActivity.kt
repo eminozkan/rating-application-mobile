@@ -1,4 +1,4 @@
-package dev.ozkan.ratingapplication.app.login
+package dev.ozkan.ratingapplication.app.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

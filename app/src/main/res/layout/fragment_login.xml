@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/login_background"
-    tools:context=".app.login.AuthenticationActivity">
+    tools:context=".app.auth.AuthenticationActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -44,6 +44,7 @@
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
                 android:hint="Email"
+                android:text="testuser2@email.tld"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:textColor="@color/black"
                 android:drawablePadding="8dp"/>
@@ -53,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/password"
+                android:text="password"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
                 android:inputType="textPassword"

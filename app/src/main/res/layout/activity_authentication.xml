@@ -7,7 +7,7 @@
     android:background="@drawable/login_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".app.login.AuthenticationActivity">
+    tools:context=".app.auth.AuthenticationActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:usesCleartextTraffic="true"
