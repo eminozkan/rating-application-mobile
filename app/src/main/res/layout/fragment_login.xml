@@ -61,6 +61,14 @@
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:textColor="@color/black"
                 android:drawablePadding="8dp"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Remember me"
+                android:id="@+id/btn_remember"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="6dp"
+                />
 
             <Button
                 android:layout_width="match_parent"
@@ -68,7 +76,6 @@
                 android:text="Login"
                 android:id="@+id/btn_login"
                 android:textSize="18sp"
-                android:layout_marginTop="30dp"
                 android:backgroundTint="@color/lavender"
                 app:cornerRadius = "20dp"/>
 
