@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="dev.ozkan.ratingapplication.app.login.Login"
+        android:name="dev.ozkan.ratingapplication.app.auth.Login"
         android:label="Login" >
         <action
             android:id="@+id/action_login_to_signUp"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp"
-        android:name="dev.ozkan.ratingapplication.app.login.SignUp"
+        android:name="dev.ozkan.ratingapplication.app.auth.SignUp"
         android:label="SignUp" >
         <action
             android:id="@+id/action_signUp_to_login"
