@@ -1,4 +1,4 @@
-package dev.ozkan.ratingapplication.app.auth.dto.login
+package dev.ozkan.ratingapplication.core.auth.dto.login
 
 data class LoginData(
     val email : String,

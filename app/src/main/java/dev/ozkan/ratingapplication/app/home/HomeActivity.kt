@@ -3,7 +3,7 @@ package dev.ozkan.ratingapplication.app.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import dev.ozkan.ratingapplication.app.home.dto.SessionResponse
+import dev.ozkan.ratingapplication.core.auth.dto.SessionResponse
 import dev.ozkan.ratingapplication.core.auth.AuthenticationToken
 import dev.ozkan.ratingapplication.core.retrofit.MainRetrofitInstance
 import dev.ozkan.ratingapplication.databinding.ActivityHomeBinding

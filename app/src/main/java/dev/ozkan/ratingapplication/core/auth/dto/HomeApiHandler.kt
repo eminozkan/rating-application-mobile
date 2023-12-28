@@ -1,7 +1,5 @@
-package dev.ozkan.ratingapplication.app.home
+package dev.ozkan.ratingapplication.core.auth.dto
 
-import dev.ozkan.ratingapplication.app.home.dto.SessionResponse
-import okhttp3.Cookie
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header

@@ -1,6 +1,6 @@
 package dev.ozkan.ratingapplication.core.retrofit
 
-import dev.ozkan.ratingapplication.app.auth.AuthApiHandler
+import dev.ozkan.ratingapplication.core.auth.AuthApiHandler
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
