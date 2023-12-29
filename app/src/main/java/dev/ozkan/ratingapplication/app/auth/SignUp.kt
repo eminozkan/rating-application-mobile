@@ -53,14 +53,19 @@ class SignUp : Fragment() {
                     if (response.isSuccessful){
                         Toast.makeText(context, "Successfully Registered", Toast.LENGTH_LONG).show()
                     }else{
-                        val gson = Gson()
-                        try {
-                            val errorResponse = gson.fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
-                            val errorMessage = errorResponse.message
-                            Toast.makeText(context, errorMessage , Toast.LENGTH_LONG).show()
-                        } catch (e: JsonSyntaxException) {
-                            Log.e("Json Syntax Error", "Error : ${e.message}")
-                        }
+                        handleErrorResponse(response)
+                    }
+                }
+
+                private fun handleErrorResponse(response: Response<RegisterResponse>) {
+                    val gson = Gson()
+                    try {
+                        val errorResponse =
+                            gson.fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
+                        val errorMessage = errorResponse.message
+                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+                    } catch (e: JsonSyntaxException) {
+                        Log.e("Json Syntax Error", "Error : ${e.message}")
                     }
                 }
 

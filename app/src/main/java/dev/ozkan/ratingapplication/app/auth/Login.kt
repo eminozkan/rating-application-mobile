@@ -17,6 +17,7 @@ import dev.ozkan.ratingapplication.core.auth.dto.login.LoginData
 import dev.ozkan.ratingapplication.core.auth.dto.login.LoginResponse
 import dev.ozkan.ratingapplication.core.auth.AuthenticationToken
 import dev.ozkan.ratingapplication.core.auth.dto.error.ErrorResponse
+import dev.ozkan.ratingapplication.core.auth.dto.register.RegisterResponse
 import dev.ozkan.ratingapplication.core.retrofit.AuthRetrofitInstance
 import dev.ozkan.ratingapplication.databinding.FragmentLoginBinding
 import retrofit2.Call
@@ -59,17 +60,22 @@ class Login : Fragment() {
                         val intent = Intent(context, HomeActivity::class.java)
                         startActivity(intent)
                     }else{
-                        val gson = Gson()
-                        try {
-                            val errorResponse = gson.fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
-                            val errorMessage = errorResponse.message
-                            Toast.makeText(context, errorMessage , Toast.LENGTH_LONG).show()
-                        } catch (e: JsonSyntaxException) {
-                            Log.e("Json Syntax Error", "Error : ${e.message}")
-                        }
+                        handleErrorResponse(response)
                     }
                 }
 
+
+                private fun handleErrorResponse(response: Response<LoginResponse>) {
+                    val gson = Gson()
+                    try {
+                        val errorResponse =
+                            gson.fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
+                        val errorMessage = errorResponse.message
+                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+                    } catch (e: JsonSyntaxException) {
+                        Log.e("Json Syntax Error", "Error : ${e.message}")
+                    }
+                }
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     Log.d("Authentication Fail","Authentication Failed" + t.message)
                 }
