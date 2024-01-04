@@ -9,11 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import dev.ozkan.ratingapplication.R
 import dev.ozkan.ratingapplication.app.home.HomeActivity
-import dev.ozkan.ratingapplication.app.auth.dto.login.LoginData
-import dev.ozkan.ratingapplication.app.auth.dto.login.LoginResponse
+import dev.ozkan.ratingapplication.core.auth.dto.login.LoginData
+import dev.ozkan.ratingapplication.core.auth.dto.login.LoginResponse
 import dev.ozkan.ratingapplication.core.auth.AuthenticationToken
+import dev.ozkan.ratingapplication.core.auth.dto.error.ErrorResponse
+import dev.ozkan.ratingapplication.core.auth.dto.register.RegisterResponse
 import dev.ozkan.ratingapplication.core.retrofit.AuthRetrofitInstance
 import dev.ozkan.ratingapplication.databinding.FragmentLoginBinding
 import retrofit2.Call
@@ -56,10 +60,22 @@ class Login : Fragment() {
                         val intent = Intent(context, HomeActivity::class.java)
                         startActivity(intent)
                     }else{
-                        Toast.makeText(context, "Invalid credentials", Toast.LENGTH_LONG).show()
+                        handleErrorResponse(response)
                     }
                 }
 
+
+                private fun handleErrorResponse(response: Response<LoginResponse>) {
+                    val gson = Gson()
+                    try {
+                        val errorResponse =
+                            gson.fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
+                        val errorMessage = errorResponse.message
+                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+                    } catch (e: JsonSyntaxException) {
+                        Log.e("Json Syntax Error", "Error : ${e.message}")
+                    }
+                }
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     Log.d("Authentication Fail","Authentication Failed" + t.message)
                 }
