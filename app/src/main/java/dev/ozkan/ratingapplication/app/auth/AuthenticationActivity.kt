@@ -1,9 +1,12 @@
 package dev.ozkan.ratingapplication.app.auth
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import dev.ozkan.ratingapplication.R
+import dev.ozkan.ratingapplication.app.home.HomeActivity
 import dev.ozkan.ratingapplication.databinding.ActivityAuthenticationBinding
 
 class AuthenticationActivity : AppCompatActivity() {
@@ -15,5 +18,8 @@ class AuthenticationActivity : AppCompatActivity() {
 
         val fragmentContainerView = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = fragmentContainerView.navController
+
     }
+
+
 }

@@ -1,5 +1,6 @@
 package dev.ozkan.ratingapplication.app.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
@@ -15,9 +17,8 @@ import dev.ozkan.ratingapplication.R
 import dev.ozkan.ratingapplication.app.home.HomeActivity
 import dev.ozkan.ratingapplication.core.auth.dto.login.LoginData
 import dev.ozkan.ratingapplication.core.auth.dto.login.LoginResponse
-import dev.ozkan.ratingapplication.core.auth.AuthenticationToken
+import dev.ozkan.ratingapplication.core.auth.Session
 import dev.ozkan.ratingapplication.core.auth.dto.error.ErrorResponse
-import dev.ozkan.ratingapplication.core.auth.dto.register.RegisterResponse
 import dev.ozkan.ratingapplication.core.retrofit.AuthRetrofitInstance
 import dev.ozkan.ratingapplication.databinding.FragmentLoginBinding
 import retrofit2.Call
@@ -56,7 +57,7 @@ class Login : Fragment() {
                     response: Response<LoginResponse>
                 ) {
                     if (response.isSuccessful){
-                        AuthenticationToken.token = response.body()!!.token;
+                        Session.token = response.body()!!.token;
                         val intent = Intent(context, HomeActivity::class.java)
                         startActivity(intent)
                     }else{
@@ -82,10 +83,17 @@ class Login : Fragment() {
 
             })
         }
-
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         return binding.root
     }
 
-    companion object {
-    }
+
+
+
+
 }
