@@ -63,14 +63,6 @@
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:textColor="@color/black"
                 android:drawablePadding="8dp"/>
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Remember me"
-                android:id="@+id/btn_remember"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="6dp"
-                />
 
             <Button
                 android:layout_width="match_parent"
